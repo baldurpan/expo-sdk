@@ -323,15 +323,15 @@ export default class Video extends Component<Props, State> {
   render() {
     const uri: ?string = _getURIFromSource(this.props.source);
 
-    let nativeResizeMode: Object = NativeModules.UIManager.ExponentVideo.Constants.ScaleNone;
+    let nativeResizeMode: Object = NativeModules.ExponentVideoManager.ScaleNone;
     if (this.props.resizeMode) {
       let resizeMode: ResizeMode = this.props.resizeMode;
       if (resizeMode === Video.RESIZE_MODE_STRETCH) {
-        nativeResizeMode = NativeModules.UIManager.ExponentVideo.Constants.ScaleToFill;
+        nativeResizeMode = NativeModules.ExponentVideoManager.ScaleToFill;
       } else if (resizeMode === Video.RESIZE_MODE_CONTAIN) {
-        nativeResizeMode = NativeModules.UIManager.ExponentVideo.Constants.ScaleAspectFit;
+        nativeResizeMode = NativeModules.ExponentVideoManager.ScaleAspectFit;
       } else if (resizeMode === Video.RESIZE_MODE_COVER) {
-        nativeResizeMode = NativeModules.UIManager.ExponentVideo.Constants.ScaleAspectFill;
+        nativeResizeMode = NativeModules.ExponentVideoManager.ScaleAspectFill;
       }
     }
 
