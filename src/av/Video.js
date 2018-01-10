@@ -126,6 +126,10 @@ const _STYLES = StyleSheet.create({
   },
 });
 
+const ExpoVideoManagerConstants = NativeModules.UIManager.ExponentVideo
+  ? NativeModules.UIManager.ExponentVideo.Constants
+  : NativeModules.ExponentVideoManager;
+
 export default class Video extends Component<Props, State> {
   static RESIZE_MODE_CONTAIN = 'contain';
   static RESIZE_MODE_COVER = 'cover';
@@ -323,15 +327,15 @@ export default class Video extends Component<Props, State> {
   render() {
     const uri: ?string = _getURIFromSource(this.props.source);
 
-    let nativeResizeMode: Object = NativeModules.ExponentVideoManager.ScaleNone;
+    let nativeResizeMode: Object = ExpoVideoManagerConstants.ScaleNone;
     if (this.props.resizeMode) {
       let resizeMode: ResizeMode = this.props.resizeMode;
       if (resizeMode === Video.RESIZE_MODE_STRETCH) {
-        nativeResizeMode = NativeModules.ExponentVideoManager.ScaleToFill;
+        nativeResizeMode = ExpoVideoManagerConstants.ScaleToFill;
       } else if (resizeMode === Video.RESIZE_MODE_CONTAIN) {
-        nativeResizeMode = NativeModules.ExponentVideoManager.ScaleAspectFit;
+        nativeResizeMode = ExpoVideoManagerConstants.ScaleAspectFit;
       } else if (resizeMode === Video.RESIZE_MODE_COVER) {
-        nativeResizeMode = NativeModules.ExponentVideoManager.ScaleAspectFill;
+        nativeResizeMode = ExpoVideoManagerConstants.ScaleAspectFill;
       }
     }
 
